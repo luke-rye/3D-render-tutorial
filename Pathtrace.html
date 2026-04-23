@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Path Tracing Interactive Tool</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
+    <button onclick="location.href='index.html'" class="ui-button">Home</button>
+</div>
+    <h1>3D Path Tracing Interactive Tool</h1>
+    <div id="container">
+        <div class="panel" id="panel-3d">
+            <h2>3D Visualization Viewport</h2>
+            <div id="viewport-3d"></div>
+        </div>
+
+<div id="ui-panel" class="panel">
+    <h2>Scene Controls</h2>
+    
+    
+
+    <div class="input-group">
+        <label>Add Shape</label>
+        <select id="shape-selector" class="ui-select">
+            <option value="sphere">Sphere</option>
+            <option value="box">Cube</option>
+            <option value="plane">Plane</option>
+        </select>
+        <button id="add-shape-btn" class="ui-button-small">+</button>
+        
+    </div>
+
+
+  
+
+    <div id="inspector-ui" class="inspector-visible">
+        <div class="panel-header-sub">Shape Properties</div>
+        <div class="input-row">
+            <span>Color</span>
+            <input type="color" id="color-picker" class="ui-color">
+        </div>
+        <div class="input-row">
+            <span>Size</span>
+            <input type="range" id="size-slider" min="0.1" max="5" step="0.1" value="1">
+        </div>
+        <div class="input-row">
+            <span>Opacity</span>
+            <input type="range" id="Opacity-slider" min="0" max="1" step="0.1" value="1">
+        </div>
+        <div class="input-row">
+            <span>Reflectivity</span>
+            <input type="range" id="reflectivity-slider" min="0" max="1" step="0.1" value="0">
+        </div>
+        <button id="delete-btn" class="ui-button-danger">Delete Selected</button>
+    </div>
+
+        <div id="inspector-ui" class="inspector-visible">
+            <div class="panel-header-sub">Light Properties</div>
+            <div class="input-row">
+                <span>Color</span>
+                <input type="color" id="light-color-picker" class="ui-color">
+            </div>
+                <div class="input-row">
+                    <span>Intensity</span>
+                    <input type="range" id="light-intensity-slider" min="0" max="200" step="10" value="100">
+                </div>
+
+                <button id="add-light-btn" class="ui-button-add">Add Point light</button>
+
+        </div>
+    </div>
+
+        <div class="panel" id="panel-2d">
+            <h2>2D Rendered Image</h2>
+            
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <label>Samples:</label>
+                <input type="range" id="samples-slider" min="10" max="500" step="10" value="200" style="flex: 1;">
+                <span id="samples-value" style="min-width: 40px; text-align: right;">200</span>
+            </div>
+                
+            <canvas id="render-2d-canvas" width="512" height="512"></canvas>
+            <button id="render-all-btn" style="width: 100%; padding: 10px; cursor: pointer; background: #444; color: white; border: none; border-bottom: 1px solid #555;">
+        Render Full Scene
+    </button>
+        </div>
+    </div>
+    <!-- Import three.js -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="/pathtracer.js"></script>
+</body>
+</html>
